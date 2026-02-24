@@ -20,12 +20,12 @@ Image: https://hub.docker.com/r/dvdmalek/model-service
 
 ### Step 1: Pull the image from Docker Hub
 ```
-docker pull dvdmalek/model-service:latest
+docker pull dvdmalek/resnet50-service:latest
 ```
 
 ### Step 2: Run the container
 ```
-docker run -p 5000:5000 dvdmalek/model-service:latest
+docker run -p 5000:5000 dvdmalek/resnet50-service:latest
 ```
 
 ### Step 3: Send a prediction request
