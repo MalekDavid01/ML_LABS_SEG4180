@@ -14,11 +14,20 @@ def health():
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    image_url = request.data.decode("utf-8")
-
     try:
-        output = model(image_url)
-        return jsonify(output), 200
+        data = request.get_json()
+        image_url = data.get("image_url")
+
+        if not image_url:
+            return jsonify({"error": "Missing 'image_url' in request"}), 400
+
+        predictions = model(image_url)
+
+        return jsonify({
+            "input": image_url,
+            "predictions": predictions
+        }), 200
+
     except Exception as error:
         return jsonify({"error": str(error)}), 415
 
